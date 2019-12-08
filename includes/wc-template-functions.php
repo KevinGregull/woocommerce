@@ -3543,7 +3543,7 @@ function wc_get_formatted_cart_item_data( $cart_item, $flat = false ) {
 				// If this is a term slug, get the term's nice name.
 				$term = get_term_by( 'slug', $value, $taxonomy );
 				if ( ! is_wp_error( $term ) && $term && $term->name ) {
-					$value = $term->name;
+					$value = apply_filters( 'woocommerce_variation_option_name', $term->name, null, $taxonomy, $cart_item['data'] );
 				}
 				$label = wc_attribute_label( $taxonomy );
 			} else {
